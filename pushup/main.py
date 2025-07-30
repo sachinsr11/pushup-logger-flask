@@ -28,7 +28,7 @@ def new_workout():
 @login_required
 def new_workout_post():
     pushups = request.form.get('pushups')
-    comment = request.form.get('comment')
+    comment = request.form.get('comment') or ""
 
     workout = Workout(pushups=pushups, comment=comment, author=current_user)
     db.session.add(workout)
@@ -54,7 +54,7 @@ def update_workout(workout_id):
     workout = Workout.query.get_or_404(workout_id)
     if request.method == 'POST':
         workout.pushups = request.form['pushups']
-        workout.comment = request.form['comment']
+        workout.comment = request.form['comment'] or ""
         db.session.commit()
         flash('Your workout has been updated!')
         return redirect(url_for('main.user_workouts'))

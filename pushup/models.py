@@ -15,5 +15,5 @@ class Workout(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     pushups = db.Column(db.Integer, nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    comment = db.Column(db.Text, nullable=False)
+    comment = db.Column(db.Text, nullable=True)  # changed from nullable=False
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)

@@ -1,0 +1,6 @@
+env/
+instance/
+LICENSE
+README.md
+Procfile
+pushup/__pycache__/

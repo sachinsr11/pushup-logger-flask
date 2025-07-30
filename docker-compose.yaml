@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  flask-app:
+    build: .
+    container_name: flask-2
+    restart: always
+    ports:
+      - "5001:5000"
+    environment:
+      - DATABASE_URL=sqlite:///instance/mydatabase.db
+    volumes:
+      - ./pushup:/app/pushup    # Mount code for live changes
+      - ./instance:/app/instance  # Persist SQLite database
+
+volumes:
+  sqlite_data:
